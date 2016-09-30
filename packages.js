@@ -65,6 +65,26 @@
       return parceria;
     },
 
+    // Return a list of size for the given array of nodes.
+    size: function(nodes) {
+      var map = {},
+          size = [];
+
+      // Compute a map from name to node.
+      nodes.forEach(function(d) {
+        map[d.name] = d;
+      });
+
+      // For each import, construct a link from the source to target node.
+      nodes.forEach(function(d) {
+        if (d.size) d.size.forEach(function(i) {
+          size.push({source: map[d.name], target: map[i]});
+        });
+      });
+
+      return size;
+    },
+
     junto: function(nodes){
       var map = {},
           area = [],

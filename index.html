@@ -8,36 +8,38 @@
 body{
   background-color: #333;
   font-family: 'Inconsolata', monospace;
-  color: #fff;
+  color: #ccc;
 
   position: relative;
 }
-.main-container{
+#main-container{
   position: relative;
   text-align: center;
   margin: 0 auto;
 }
-svg text{
+#main-container svg{
   font-family: 'Inconsolata', monospace;
-  font-size: 16px;
-  fill: #fff;
+  font-size: 14px;
 }
-svg path.arc{
+#main-container svg path.arc{
   fill: #333;
 }
 
-path.arc {
-  cursor: move;
-  fill: #fff;
+#tension-container{
+  position:absolute;
+  bottom:0;
+  font-size:18px;
+}
+#tension-container input{
+  position:relative;
+  top:3px;
 }
 
-/*.node {
-  font-size: 10px;
+
+.node {
+  fill: #ccc;
 }
 
-.node:hover {
-  fill: #1f77b4;
-}*/
 
 .link {
   fill: none;
@@ -51,20 +53,33 @@ path.arc {
   stroke-width: 2px;
 }
 
-.node.target {
-  fill: #d62728 !important;
-}
-
-.link.source {
-  stroke: #d62728;
-}
-
 .node.source {
-  fill: #2ca02c;
+  fill: #b23d3d;
 }
 
 .link.target {
-  stroke: #2ca02c;
+  stroke: #b23d3d;
+}
+
+.node.target {
+  fill: #ff4e4e !important;
+}
+
+.link.source {
+  stroke: #ff4e4e !important;
+}
+
+.link.main_parceria{
+  stroke-width: 5px;
+}
+.node.main_parceria{
+  font-size: 18px;
+}
+
+.node:hover {
+  fill: #ea2020;
+  font-size: 24px;
+  cursor: pointer;
 }
 
     </style>
@@ -74,7 +89,7 @@ path.arc {
       Ecossistema<br>
       Somos Goma
     </h2>
-    <div style="position:absolute;bottom:0;font-size:18px;">tension: <input style="position:relative;top:3px;" type="range" min="0" max="100" value="85"></div>
+    <div id="tension-container">tensão: <input type="range" min="0" max="100" value="85"></div>
     <script type="text/javascript" src="d3.js"></script>
     <script type="text/javascript" src="d3.layout.js"></script>
     <script type="text/javascript" src="packages.js"></script>
@@ -109,7 +124,7 @@ var div = d3.select("body").insert("div", "h2")
     .style("height", h + "px")
     //.style("position", "absolute")
     .style("-webkit-backface-visibility", "hidden")
-    .attr("class", function(d) { return "main-container"; });
+    .attr("id", function(d) { return "main-container"; });
 
 var svg = div.append("svg:svg")
     .attr("width", w)
@@ -207,6 +222,17 @@ function mouseover(d) {
   svg.selectAll("path.link.source-" + d.key)
       .classed("source", true)
       .each(updateNodes("target", true));
+
+  svg.selectAll("path.link")
+      .classed("main_parceria", false);
+  svg.select(".node")
+      .classed("main_parceria", false);
+  var main_parceria = d.parceria[0] ? d.parceria[0].split('.')[2] : '';
+  svg.selectAll("path.link.target-" + main_parceria+'.source-'+d.key)
+      .classed("main_parceria", true);
+  svg.select("#node-" + main_parceria)
+      .classed("main_parceria", true);
+
 }
 
 function mouseout(d) {
@@ -217,6 +243,16 @@ function mouseout(d) {
   svg.selectAll("path.link.target-" + d.key)
       .classed("target", false)
       .each(updateNodes("source", false));
+
+  svg.selectAll("path.link")
+      .classed("main_parceria", false);
+  svg.select(".node")
+      .classed("main_parceria", false);
+  var main_parceria = d.parceria[0] ? d.parceria[0].split('.')[2] : '';
+  svg.selectAll("path.link.target-" + main_parceria+'.source-'+d.key)
+      .classed("main_parceria", false);
+  svg.select("#node-" + main_parceria)
+      .classed("main_parceria", false);
 }
 
 function updateNodes(name, value) {
