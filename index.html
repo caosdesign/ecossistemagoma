@@ -53,7 +53,7 @@ body{
   stroke-width: 2px;
 }
 
-.node.source {
+/*.node.source {
   fill: #be6b6b;
 }
 
@@ -67,20 +67,20 @@ body{
 
 .link.source {
   stroke: #ff4e4e !important;
-}
+}*/
 
 .link.main_parceria{
-  stroke-width: 5px;
+  stroke-width: 4px;
 }
 .node.main_parceria{
   font-size: 18px;
 }
 
-.node:hover {
+/*.node:hover {
   fill: #ea2020;
   font-size: 24px;
   cursor: pointer;
-}
+}*/
 
     </style>
   </head>
@@ -89,7 +89,7 @@ body{
       Ecossistema<br>
       Somos Goma
     </h2>
-    <div id="tension-container">tensão: <input type="range" min="0" max="100" value="85"></div>
+    <div id="tension-container">tensão: <input type="range" min="0" max="100" value="65"></div>
     <script type="text/javascript" src="d3.js"></script>
     <script type="text/javascript" src="d3.layout.js"></script>
     <script type="text/javascript" src="packages.js"></script>
@@ -112,7 +112,7 @@ var bundle = d3.layout.bundle();
 
 var line = d3.svg.line.radial()
     .interpolate("bundle")
-    .tension(.85)
+    .tension(.65)
     .radius(function(d) { return d.y; })
     .angle(function(d) { return d.x / 180 * Math.PI; });
 
@@ -162,9 +162,10 @@ d3.json("goma-imports.json", function(classes) {
       .attr("dy", ".31em")
       .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
       .attr("transform", function(d) { return d.x < 180 ? null : "rotate(180)"; })
-      .text(function(d) { return d.key; })
+      .text(function(d) { return '.';})//{ return d.key; })//novosComportamentosIniciais(d);
       .on("mouseover", mouseover)
       .on("mouseout", mouseout);
+
 
   d3.select("input[type=range]").on("change", function() {
     line.tension(this.value / 100);
@@ -253,6 +254,27 @@ function mouseout(d) {
       .classed("main_parceria", false);
   svg.select("#node-" + main_parceria)
       .classed("main_parceria", false);
+}
+
+function novosComportamentosIniciais(d) {
+  svg.selectAll("path.link.target-" + d.key)
+      .classed("target", true)
+      .each(updateNodes("source", true));
+
+  svg.selectAll("path.link.source-" + d.key)
+      .classed("source", true)
+      .each(updateNodes("target", true));
+
+  // svg.selectAll("path.link")
+  //     .classed("main_parceria", false);
+  // svg.select(".node")
+  //     .classed("main_parceria", false);
+  var main_parceria = d.parceria[0] ? d.parceria[0].split('.')[2] : '';
+  svg.selectAll("path.link.target-" + main_parceria+'.source-'+d.key)
+      .classed("main_parceria", true);
+  svg.select("#node-" + main_parceria)
+      .classed("main_parceria", true);
+
 }
 
 function updateNodes(name, value) {

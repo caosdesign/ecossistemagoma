@@ -12,7 +12,7 @@
 {"name":"empresa.estratégiaconsultoria.carioteca","size":0,"parceria":["empresa.comunicação.upline","empresa.comunicação.rastro","empresa.estratégiaconsultoria.asap","empresa.arquitetura.estúdioguanabara"]},
 {"name":"empresa.educação.lâmpadamágica","size":0,"parceria":[]},
 {"name":"empresa.designgráfico.elisadesigner","size":0,"parceria":["empresa.designdeproduto.zebu","empresa.estratégiaconsultoria.matériabrasil","empresa.estratégiaconsultoria.clôcomunicação","empresa.estratégiaconsultoria.gitec","empresa.estratégiaconsultoria.asap"]},
-{"name":"empresa.outro.digitaljc","size":0,"parceria":[]},
+{"name":"empresa.outro.noise","size":0,"parceria":[]},
 {"name":"empresa.designgráfico.selênia","size":0,"parceria":["empresa.audiovisual.cadenzafilmes"]},
 {"name":"empresa.educação.hevp","size":0,"parceria":["empresa.estratégiaconsultoria.matériabrasil"]},
 {"name":"empresa.outro.betacafé","size":0,"parceria":["empresa.comunicação.upline"]},
@@ -22,4 +22,13 @@
 {"name":"empresa.audiovisual.libélula","size":0,"parceria":["empresa.audiovisual.cadenzafilmes","empresa.comunicação.upline","empresa.designgráfico.selênia","empresa.estratégiaconsultoria.matériabrasil","empresa.designdeproduto.zebu"]},
 {"name":"empresa.estratégiaconsultoria.atreidesventurasltda","size":0,"parceria":["empresa.arquitetura.estúdioguanabara"]},
 {"name":"empresa.estratégiaconsultoria.clôcomunicação","size":0,"parceria":["empresa.designgráfico.elisadesigner","empresa.designdeproduto.zebu","empresa.arquitetura.estúdioguanabara","empresa.estratégiaconsultoria.asap","empresa.estratégiaconsultoria.gitec"]},
-{"name":"empresa.educação.gustavoferracioli","size":0,"parceria":["empresa.designdeproduto.zebu","empresa.estratégiaconsultoria.clôcomunicação","empresa.comunicação.upline","empresa.estratégiaconsultoria.asap","empresa.estratégiaconsultoria.matériabrasil"]}]
+{"name":"empresa.educação.gustavoferracioli","size":0,"parceria":["empresa.designdeproduto.zebu","empresa.estratégiaconsultoria.clôcomunicação","empresa.comunicação.upline","empresa.estratégiaconsultoria.asap","empresa.estratégiaconsultoria.matériabrasil"]},
+{"name":"empresa.comunicação.suco","size":0,"parceria":["empresa.comunicação.upline","empresa.audiovisual.cadenzafilmes","empresa.estratégiaconsultoria.matériabrasil","empresa.comunicação.rastro"]},
+{"name":"empresa.outro.tucum","size":0,"parceria":["empresa.estratégiaconsultoria.matériabrasil"]},
+{"name":"empresa.estratégiaconsultoria.raizes","size":0,"parceria":[]},
+{"name":"empresa.outro.Reikilibrese","size":0,"parceria":["empresa.comunicação.upline"]},
+{"name":"empresa.educação.antônioziviani","size":0,"parceria":["empresa.estratégiaconsultoria.matériabrasil"]},
+{"name":"empresa.educação.gaiajovemrio","size":0,"parceria":["empresa.estratégiaconsultoria.carioteca","empresa.designdeproduto.zebu"]},
+{"name":"empresa.outro.ciclocourier","size":0,"parceria":[]},
+{"name":"empresa.estratégiaconsultoria.entrenós","size":0,"parceria":["empresa.designdeproduto.zebu","empresa.estratégiaconsultoria.carioteca","empresa.arquitetura.estúdioguanabara","empresa.audiovisual.cadenzafilmes","empresa.estratégiaconsultoria.asap"]},
+{"name":"empresa.outro.minka","size":0,"parceria":[]}]
