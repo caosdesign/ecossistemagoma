@@ -4,13 +4,25 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <!-- <link type="text/css" rel="stylesheet" href="style.css"/> -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech|Share+Tech+Mono" rel="stylesheet">
     <style type="text/css">
       body{
         background-color: #cc3333;
-        font-family: 'Montserrat', sans-serif;
-        color: #ccc;
+        font-family: 'Share Tech', sans-serif;
+        color: #fff;
 
         position: relative;
+      }
+      h2{
+        font-family: 'Share Tech', sans-serif;
+        font-size: 20px;
+        opacity: .5;
+        letter-spacing: 14px;
+        font-weight: normal;
+      }
+      img.logo{
+        width: 100px;
+        height: auto;
       }
       #main-container{
         position: relative;
@@ -18,8 +30,9 @@
         margin: 0 auto;
       }
       #main-container svg{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 14px;
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 12px;
+        letter-spacing: 2px;
       }
       #main-container svg path.arc{
         fill: #cc3333;
@@ -28,7 +41,7 @@
       #tension-container{
         position:absolute;
         bottom:0;
-        font-size:18px;
+        font-size:15px;
       }
       #tension-container input{
         position:relative;
@@ -38,65 +51,72 @@
 
       .node {
         fill: #fff;
+        opacity: .4;
       }
 
 
       .link {
         fill: none;
         stroke: #fff;
-        stroke-opacity: .4;
+        stroke-opacity: .3;
         pointer-events: none;
       }
 
       .link.source, .link.target {
-        stroke-opacity: 1;
+        stroke-opacity: .8;
         stroke-width: 2px;
       }
 
       .node.source {
-        fill: #444;
+        fill: #fff;
+        opacity: .9;
       }
 
       .link.target {
-        stroke: #444;
+        stroke: #fff;
+        opacity: .9;
       }
 
       .node.target {
-        fill: #222 !important;
+        fill: #fff !important;
+        opacity: 1;
       }
 
       .link.source {
-        stroke: #222 !important;
+        stroke: #fff !important;
+        opacity: 1;
       }
 
       .link.main_parceria{
         stroke-width: 5px;
       }
       .node.main_parceria{
-        font-size: 18px;
+        font-size: 15px;
       }
 
       .node:hover {
-        fill: #222;
-        font-size: 24px;
+        fill: #fff;
+        opacity: 1;
+        font-size: 17px;
         cursor: pointer;
       }
 
     </style>
   </head>
   <body>
-    <h2 style="text-align: right;">
-      Ecossistema<br>
-      Somos Goma
+    <h2 style="text-align: center;">
+      ecossistema
     </h2>
+    <div style="text-align: center;"><img class="logo" src="logo_goma.svg"></div>
+    <div class="grafico-container"></div>
     <div id="tension-container">tensão: <input type="range" min="0" max="100" value="65"></div>
     <script type="text/javascript" src="d3.js"></script>
     <script type="text/javascript" src="d3.layout.js"></script>
     <script type="text/javascript" src="packages.js"></script>
     <script type="text/javascript">
 
-var w = 800,
-    h = 800,
+var w = 900,
+    h = 900,
     rx = w / 2,
     ry = w / 2,
     m0,
@@ -105,7 +125,7 @@ var w = 800,
 var splines = [];
 
 var cluster = d3.layout.cluster()
-    .size([360, ry - 150])
+    .size([360, ry - 200])
     .sort(function(a, b) { return d3.ascending(a.key, b.key); });
 
 var bundle = d3.layout.bundle();
@@ -117,7 +137,7 @@ var line = d3.svg.line.radial()
     .angle(function(d) { return d.x / 180 * Math.PI; });
 
 // Chrome 15 bug: <http://code.google.com/p/chromium/issues/detail?id=98951>
-var div = d3.select("body").insert("div", "h2")
+var div = d3.select("body").insert("div", "grafico-container")
     //.style("top", "-80px")
     //.style("left", "-160px")
     .style("width", w + "px")
