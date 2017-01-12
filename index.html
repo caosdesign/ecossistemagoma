@@ -13,12 +13,14 @@
 
         position: relative;
       }
-      h2{
+      h1{
         font-family: 'Share Tech', sans-serif;
         font-size: 20px;
         opacity: .5;
         letter-spacing: 14px;
         font-weight: normal;
+        margin-right: -15px;
+        text-align: center;
       }
       img.logo{
         width: 100px;
@@ -101,13 +103,15 @@
         cursor: pointer;
       }
 
+      #cabecalho {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <h2 style="text-align: center;">
-      ecossistema
-    </h2>
-    <div style="text-align: center;"><img class="logo" src="logo_goma.svg"></div>
+    <div id="cabecalho">
+      <h1>ecossistema</h2>
+      <img class="logo" src="logo_goma.svg"></div>
     <div class="grafico-container"></div>
     <div id="tension-container">tensão: <input type="range" min="0" max="100" value="65"></div>
     <script type="text/javascript" src="d3.js"></script>
